@@ -5,8 +5,14 @@ pub use self::dao_base::DaoBase;
 
 #[ink::contract]
 mod dao_base {
-
     use alloc::string::String;
+    use ink_storage::{
+        traits::{
+            PackedLayout,
+            SpreadLayout,
+        },
+        collections::HashMap as StorageHashMap,
+    };
     #[derive(scale::Encode, scale::Decode, Clone, SpreadLayout, PackedLayout)]
     #[cfg_attr(
     feature = "std",
