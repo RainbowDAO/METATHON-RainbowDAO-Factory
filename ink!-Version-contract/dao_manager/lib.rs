@@ -90,7 +90,7 @@ mod dao_manager {
         owner: AccountId,
         name: String,
         symbol: String,
-        total_supply: u64,
+        total_supply: u128,
         decimals: u8,
     }
 
@@ -106,7 +106,7 @@ mod dao_manager {
         controller_type:u32,
         components: DAOComponents,
         component_addrs: DAOComponentAddrs,
-        category:String
+        category:String,
     }
 
     impl DAOManager {
@@ -143,8 +143,6 @@ mod dao_manager {
             self.template = Some(template);
             true
         }
-
-
 
         /// Initialize Dao and generate various
         #[ink(message)]
@@ -221,7 +219,7 @@ mod dao_manager {
             let total_balance = Self::env().balance();
             assert!(total_balance > CONTRACT_INIT_BALANCE, "not enough unit to instance contract");
             // let vault_addr = self.component_addrs.vault_addr.unwrap();
-            let user_instance_params = DaoUsers::new(self.component_addrs.dao_setting_addr)
+            let user_instance_params = DaoUsers::new(self.component_addrs.dao_setting_addr.unwrap())
                 .endowment(CONTRACT_INIT_BALANCE)
                 .code_hash(user_code_hash)
                 .salt_bytes(salt)
