@@ -35,4 +35,8 @@ When the deployment is finished, the address of the deployed contracts will be d
 ```
 DaoFactory:  0x...
 ```
+The contract address has been deployed  ``` Rinkeby Test Network ```
+
+- daoFactory：0xa844BbBC8cEb184f8D20613dF8869628c1f305c2
+- erc20Factory:  0xCdd27850AC3f1D999166E11408DEA1137b28C5b7
 
